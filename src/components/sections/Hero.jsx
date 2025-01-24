@@ -33,14 +33,42 @@ const Hero = () => {
             Bringing military precision and tactical thinking to software development.
             From cockpit to code, I transform complex challenges into elegant solutions.
           </p>
-          <div className="flex space-x-4">
+          <div className="flex space-x-3">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-3 font-medium text-white rounded-md bg-primary-600"
-              onClick={() => window.open('portfolio.pdf')}
+              onClick={() => window.open('public/Ahmad-Khoder-Resume-20250122.pdf')}
             >
-              Download Portfolio PDF
+              Resume PDF
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-3 margin-bottom: 2% font-medium border-2 rounded-md border-primary-600 text-primary-600 "
+              onClick={() => window.scrollTo({ top: document.getElementById('contact').offsetTop - 100, behavior: 'smooth' })}
+            >
+              Contact Me  
+            </motion.button>
+          </div>
+          <br />
+          <div className="flex space-x-4">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-3 font-medium border-2 rounded-md border-primary-600 text-primary-600"
+              onClick={() => window.scrollTo({ top: document.getElementById('about').offsetTop - 100, behavior: 'smooth' })}
+            >
+              About
+            </motion.button>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-3 font-medium border-2 rounded-md border-primary-600 text-primary-600"
+              onClick={() => window.scrollTo({ top: document.getElementById('experience').offsetTop - 100, behavior: 'smooth' })}
+            >
+              Experience
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -50,14 +78,7 @@ const Hero = () => {
             >
               View Projects
             </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 font-medium border-2 rounded-md border-primary-600 text-primary-600"
-              onClick={() => window.scrollTo({ top: document.getElementById('contact').offsetTop - 100, behavior: 'smooth' })}
-            >
-              Contact Me
-            </motion.button>
+            
           </div>
         </motion.div>
       </div>

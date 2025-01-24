@@ -13,17 +13,26 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('sending');
-
+  
     try {
-      // Note: You'll need to replace with your EmailJS service details
-      await emailjs.send(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
-        formData,
-        'YOUR_PUBLIC_KEY'
+      const response = await emailjs.send(
+        'service_o9mavts',
+        'template_4eepx8p',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: 'ahmad.khoder.edu@gmail.com'
+        },
+        '3nggAnEm30y1II_Lr'
       );
-      setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
+  
+      if (response.status === 200) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setStatus('error');
+      }
     } catch (error) {
       setStatus('error');
     }
@@ -38,8 +47,8 @@ const Contact = () => {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto"
         >
-          <div className="text-center mb-12">
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-3xl font-bold font-display md:text-4xl">
               Let's Connect
             </h2>
             <p className="text-gray-600 dark:text-gray-300">
@@ -49,18 +58,18 @@ const Contact = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid gap-6 md:grid-cols-2">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <label className="block text-sm font-medium mb-2">Name</label>
+                <label className="block mb-2 text-sm font-medium">Name</label>
                 <input
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-military-500/30 focus:ring-2 focus:ring-primary-500"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-md dark:border-gray-700 dark:bg-military-500/30 focus:ring-2 focus:ring-primary-500"
                   required
                 />
               </motion.div>
@@ -70,12 +79,12 @@ const Contact = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <label className="block text-sm font-medium mb-2">Email</label>
+                <label className="block mb-2 text-sm font-medium">Email</label>
                 <input
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-military-500/30 focus:ring-2 focus:ring-primary-500"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-md dark:border-gray-700 dark:bg-military-500/30 focus:ring-2 focus:ring-primary-500"
                   required
                 />
               </motion.div>
@@ -86,12 +95,12 @@ const Contact = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <label className="block text-sm font-medium mb-2">Message</label>
+              <label className="block mb-2 text-sm font-medium">Message</label>
               <textarea
                 value={formData.message}
                 onChange={(e) => setFormData({...formData, message: e.target.value})}
                 rows="6"
-                className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-military-500/30 focus:ring-2 focus:ring-primary-500"
+                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-md dark:border-gray-700 dark:bg-military-500/30 focus:ring-2 focus:ring-primary-500"
                 required
               ></textarea>
             </motion.div>
@@ -105,7 +114,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={status === 'sending'}
-                className="px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-md font-medium transition-colors"
+                className="px-8 py-3 font-medium text-white transition-colors rounded-md bg-primary-600 hover:bg-primary-700"
               >
                 {status === 'sending' ? 'Sending...' : 'Send Message'}
               </button>

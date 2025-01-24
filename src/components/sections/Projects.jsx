@@ -2,23 +2,29 @@ import { motion } from 'framer-motion';
 
 const projects = [
   {
+    title: "POS Installation",
+    description: "Expert setup and configuration of Point-of-Sale systems.",
+    tech: ["Hardware", "Software", "Design", "Installation", "Operating Systems"],
+    type: "KiTS' services"
+  },
+  {
+    title: "Inventory Management & Data Entry",
+    description: "Streamlined inventory solutions and seamless data integration.",
+    tech: ["Organization", "Databases", "SQL", "Data Entry"],
+    type: "KiTS' services"
+  },
+  {
+    title: "Hardware Sourcing & Installation",
+    description: "Provide and install high-quality hardware to support business needs.",
+    tech: ["Hardware", "Business", "Installation", "Operating Systems"],
+    type: "KiTS' services"
+  },
+  {
     title: "Flight Mission Planner",
     description: "A web-based mission planning tool incorporating military precision with modern UI/UX principles.",
-    tech: ["React", "Node.js", "MongoDB", "WebGL"],
+    tech: ["React", "Node.js", "DataBases"],
     type: "Full Stack Application"
   },
-  {
-    title: "Tactical Decision Simulator",
-    description: "Training simulation system for rapid decision-making scenarios.",
-    tech: ["Python", "TensorFlow", "Three.js"],
-    type: "AI/ML Application"
-  },
-  {
-    title: "Resource Management System",
-    description: "Enterprise-level system for managing military resources and personnel.",
-    tech: ["React", "GraphQL", "PostgreSQL"],
-    type: "Enterprise Software"
-  }
 ];
 
 const Projects = () => {
@@ -29,17 +35,17 @@ const Projects = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="mb-12 text-center"
         >
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="mb-4 text-3xl font-bold font-display md:text-4xl">
             Featured Projects
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
             Combining military precision with modern software development
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -47,23 +53,23 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white dark:bg-military-500/30 rounded-lg shadow-lg overflow-hidden"
+              className="overflow-hidden bg-white rounded-lg shadow-lg dark:bg-military-500/30"
             >
               <div className="p-6">
-                <span className="text-primary-600 text-sm font-medium">
+                <span className="text-sm font-medium text-primary-600">
                   {project.type}
                 </span>
-                <h3 className="font-display text-xl font-bold mt-2 mb-3">
+                <h3 className="mt-2 mb-3 text-xl font-bold font-display">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <p className="mb-4 text-gray-600 dark:text-gray-300">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 bg-primary-100 dark:bg-primary-900/50 text-primary-800 dark:text-primary-200 rounded-full text-sm"
+                      className="px-3 py-1 text-sm rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-800 dark:text-primary-200"
                     >
                       {tech}
                     </span>
